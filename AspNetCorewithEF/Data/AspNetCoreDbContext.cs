@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspNetCorewithEF.Models
+namespace AspNetCorewithEF.Data
 {
     public class AspNetCoreDbContext : DbContext
     {
@@ -12,12 +12,7 @@ namespace AspNetCorewithEF.Models
             : base(options)
         {
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Employees>().ToTable("Employees");
-        }
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=YOUR_HOST;Database=YOUR_DATABASE;User id=YOUR_USERID;Password=YOUR_PASSWORD;Integrated Security=false;MultipleActiveResultSets=true");
